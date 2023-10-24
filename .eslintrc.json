@@ -1,0 +1,122 @@
+{
+    "ignorePatterns": [
+        "public/*",
+        "dist/*",
+        "*/dist/*",
+        "build.js",
+        "*.config.*"
+    ],
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "node": true
+    },
+    "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "plugin:prettier/recommended"],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "plugins": ["@typescript-eslint", "prettier"],
+    "rules": {
+        "prettier/prettier": [
+            "error",
+            {
+                "configFile": "./prettieerrc"
+            }
+        ],
+        "camelcase": "off",
+        "quotes": [
+            "error",
+            "double",
+            {
+                "avoidEscape": true,
+                "allowTemplateLiterals": true
+            }
+        ],
+        "@typescript-eslint/no-empty-function": "off",
+        "@typescript-eslint/naming-convention": [
+            "error",
+            {
+                "selector": "variable",
+                "format": ["camelCase", "PascalCase"]
+            },
+            {
+                "selector": "parameter",
+                "format": ["camelCase"],
+                "leadingUnderscore": "allow"
+            },
+            {
+                "selector": "memberLike",
+                "modifiers": ["private"],
+                "format": ["camelCase"],
+                "leadingUnderscore": "require"
+            },
+            {
+                "selector": "typeAlias",
+                "format": ["PascalCase"],
+                "prefix": ["T_"]
+            },
+            {
+                "selector": "interface",
+                "format": ["PascalCase"],
+                "prefix": ["T_"]
+            },
+            {
+                "selector": "class",
+                "format": ["PascalCase"]
+            },
+            {
+                "selector": "typeParameter",
+                "format": ["PascalCase"],
+                "prefix": ["T_"],
+                "filter": {
+                    "regex": "^T$",
+                    "match": false
+                }
+            }
+        ],
+        "@typescript-eslint/no-var-requires": "error",
+        "@typescript-eslint/no-explicit-any": "error",
+        "prefer-const": "error",
+        "no-var": "error",
+        "semi": ["error", "always"],
+        "@typescript-eslint/member-ordering": [
+            "error",
+            {
+                "default": [
+                    "public-static-field",
+                    "protected-static-field",
+                    "private-static-field",
+                    "public-instance-field",
+                    "protected-instance-field",
+                    "private-instance-field",
+                    "public-field",
+                    "protected-field",
+                    "private-field",
+                    "static-field",
+                    "instance-field",
+                    "field",
+                    "constructor",
+                    "public-instance-method",
+                    "protected-instance-method",
+                    "private-instance-method",
+                    "public-static-method",
+                    "protected-static-method",
+                    "private-static-method"
+                ]
+            }
+        ],
+        "linebreak-style": ["error", "unix"]
+    },
+    "overrides": [
+        {
+            "files": ["*.cjs"],
+            "rules": {
+                "no-undef": "off",
+                "@typescript-eslint/no-var-requires": "off"
+            }
+        }
+    ]
+}
+
