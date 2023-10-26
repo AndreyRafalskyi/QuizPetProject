@@ -3,7 +3,7 @@ import { useQuizQuestions } from "../../../api";
 import { CreateQuizForm } from "../../forms";
 import { T_FormValues } from "../../forms/CreateQuizForm/types";
 import { Difficulty } from "../../../constants";
-import { shuffleArray } from "../../../utils";
+import { DOMFormatString, shuffleArray } from "../../../utils";
 import { AnswersList } from "../../components";
 import { Button } from "../../common";
 import { T_QuestionItem, QuizContext } from "../../layouts";
@@ -26,7 +26,7 @@ export const HomePage = () => {
   const questions = React.useMemo<Array<T_QuestionItem>>(
     () =>
       data?.map((question) => ({
-        text: question.question,
+        text: DOMFormatString(question.question),
         category: question.category,
         correctAnswer: question.correct_answer,
         answers: shuffleArray([question.correct_answer, ...question.incorrect_answers]).map((answer) => ({
